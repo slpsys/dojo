@@ -1,0 +1,26 @@
+#!/bin/bash
+
+source ./env-vars
+source ./util
+
+## Set up Docker volume
+echo "Checking for volumes..."
+docker volume ls | grep $DOCKER_VOLUME_NAME > /dev/null
+if [ $? -ne 0 ]
+then
+  echo "Creating Docker volume..."
+  docker volume create $DOCKER_VOLUME_NAME
+fi
+
+## Set up $HOME/data, for binding to the container's /data directory
+echo "Checking for $HOME/data directory..."
+if [ ! -d $HOME/data ]
+then
+  mkdir -p $HOME/data
+fi
+
+container_id=$(get_container_id)
+if [ $? -ne 0 ]
+then
+  docker build -t $DOCKER_USER_NAME/$DOCKER_IMAGE_NAME:latest .
+fi
