@@ -18,7 +18,7 @@ get_container_id () {
 get_notebook_list () {
   echo
   echo "###############################################"
-  echo "# Info on accessing Condaxploratorium's notebook:"
+  echo "# Info on accessing Dojo's notebook:"
   echo "###############################################"
   echo
   docker exec $1 jupyter notebook list
