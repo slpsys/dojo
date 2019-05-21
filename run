@@ -6,7 +6,7 @@ source ./util
 container_id=$(get_container_id)
 if [ $? -eq 0 ]
 then
-  (>&2 echo "Condaxploratorium container already running with container id $container_id.")
+  (>&2 echo "Dojo container already running with container id $container_id.")
   get_notebook_list $container_id
   exit 1
 fi
@@ -15,11 +15,11 @@ docker run -d \
   -it \
   --rm \
   -p 8888:8888 \
-  --name condaxploratorium \
-  --mount type=volume,source=$DOCKER_VOLUME_NAME,target=/condaxploratorium \
+  --name dojo \
+  --mount type=volume,source=$DOCKER_VOLUME_NAME,target=/dojo \
   --mount type=bind,source=$HOME/data,target=/data \
   $DOCKER_USER_NAME/$DOCKER_IMAGE_NAME >/dev/null
 
 container_id=$(get_container_id)
-sleep 1
+sleep 5
 get_notebook_list $container_id

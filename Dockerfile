@@ -8,13 +8,15 @@ USER root
 RUN apt-get -qq update && \
     apt-get -qq -y install curl jq && \
     apt-get clean && \
-    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
+    mkdir -p /dojo && \
+    chgrp users /dojo && \
+    chmod 775 /dojo 
 
 ## Back to Notebook user
 USER $NB_UID
 
-## Set the root directory to be the condaxploratorium Docker Volume. This ensures that notebooks
+## Set the root directory to be the dojo Docker Volume. This ensures that notebooks
 ## will be stored locally by Docker, even if you stop the specific container.
 ## *MAKE SURE* that you run `./setup` first to initialize this locally with Docker
 WORKDIR /dojo
-
