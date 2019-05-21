@@ -14,9 +14,9 @@ fi
 
 ## Set up $HOME/data, for binding to the container's /data directory
 echo "Checking for $HOME/data directory..."
-if [ ! -d $HOME/data/notebooks ]
+if [ ! -d $HOME/data ]
 then
-  mkdir -p $HOME/data/notebooks
+  mkdir -p $HOME/data
 fi
 
 container_id=$(get_container_id)
