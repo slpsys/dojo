@@ -14,8 +14,7 @@ fi
 docker run -d \
   -it \
   --rm \
-  -p 8888:8888 \
-  --name dojo \
+  --name dojo-aws \
   --mount type=volume,source=$DOCKER_VOLUME_NAME,target=/dojo \
   --mount type=bind,source=$HOME/data,target=/data \
   $DOCKER_USER_NAME/$DOCKER_IMAGE_NAME >/dev/null

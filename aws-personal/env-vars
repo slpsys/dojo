@@ -1,5 +1,5 @@
 #!/bin/bash -e
 
 export DOCKER_USER_NAME=slpsys
-export DOCKER_IMAGE_NAME=dojo
-export DOCKER_VOLUME_NAME=dojo
+export DOCKER_IMAGE_NAME=aws-personal
+export DOCKER_VOLUME_NAME=aws-personal
