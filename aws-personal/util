@@ -1,0 +1,16 @@
+#!/bin/bash
+
+source ./env-vars
+
+get_container_id () {
+  fetch_cmd="docker ps | grep \"$DOCKER_USER_NAME/$DOCKER_IMAGE_NAME\""
+  result=$(eval $fetch_cmd)
+
+  if [ $? -eq 0 ]
+  then
+    container_id=$(echo $result | awk '{print $1}')
+    echo $container_id
+  else
+    return 1
+  fi
+}
